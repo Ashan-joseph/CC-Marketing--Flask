@@ -18,9 +18,13 @@ def view_inactive_customer_marketing():
 def view_capmpaigns_by_mcc():
     return render_template("marketing/campaign.html")
 
-@bp.route("/marketings/view-customer", methods=["GET"])
+@bp.route("/marketings/serach-customer", methods=["GET"])
+def search_customer():
+    return render_template("customer/index.html")
+
+@bp.route("/marketings/customer", methods=["GET"])
 def view_customer():
-    return render_template("marketing/customer.html")
+    return render_template("customer/show.html")
 
 @bp.route("/api/filter",methods=["POST"])
 def filer_customer():
