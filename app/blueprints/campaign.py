@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify,request
+from flask import Blueprint, jsonify,request,render_template
 from app.extensions import db
 from app.models.transactions import Transactions as TransactionModel
 from app.models.categories import Categories as CategoryModel
@@ -9,6 +9,18 @@ from app.models.analytics import Analytics as AnalyticsModel
 from sqlalchemy import not_
 
 bp = Blueprint("campaign",__name__)
+
+@bp.route("/marketings/inactive-customers", methods=["GET"])
+def view_inactive_customer_marketing():
+    return render_template("marketing/inactive.html")
+
+@bp.route("/marketings/campaigns-by-mcc", methods=["GET"])
+def view_capmpaigns_by_mcc():
+    return render_template("marketing/campaign.html")
+
+@bp.route("/marketings/view-customer", methods=["GET"])
+def view_customer():
+    return render_template("marketing/customer.html")
 
 @bp.route("/api/filter",methods=["POST"])
 def filer_customer():

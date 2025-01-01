@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify,render_template
 from app.extensions import db
 from app.models.categories import Categories as CategoryModel
 from app.models.customers import Customers as CustomerModel
@@ -7,6 +7,10 @@ import json
 import os
 
 bp = Blueprint("dashboard",__name__)
+
+@bp.route("/dashboard", methods=["GET"])
+def view_dashboard():
+    return render_template("dashboard.html")
 
 @bp.route("/api/generate-dashboard-json/", methods=["GET"])
 def get_dashboard_data():
