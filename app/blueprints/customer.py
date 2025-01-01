@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify,request
+from flask import Blueprint, jsonify,request, render_template
 from app.extensions import db
 from app.models.transactions import Transactions as TransactionModel
 from app.models.categories import Categories as CategoryModel
@@ -13,6 +13,14 @@ import pickle
 import json
 
 bp = Blueprint("customer",__name__)
+
+@bp.route("/search-customer", methods=["GET"])
+def search_customer_view():
+    return render_template("customer/index.html")
+
+@bp.route("/view-customer", methods=["GET"])
+def view_customer():
+    return render_template("customer/show.html")  
 
 @bp.route("/api/process-customer/", methods=["GET"])
 def index():
@@ -308,4 +316,4 @@ def get_mcc_name(mcc_code):
         category_data = CategoryModel.query.filter(CategoryModel.category_code == mcc_code).first()
         return category_data.name
     except Exception as e:
-        return 'N/A'    
+        return 'N/A'
