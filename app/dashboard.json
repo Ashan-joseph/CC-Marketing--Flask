@@ -44,5 +44,11 @@
             "name": "Automotive Parts and Accessories Stores",
             "total": "14,898,250.98"
         }
-    ]
+    ],
+    "chart_data": {
+        "High Spenders": 551,
+        "Moderate Spenders": 682,
+        "Budget Spenders": 2572,
+        "Low Engagement": 9715
+    }
 }
